@@ -8,6 +8,8 @@ export const LoginPage = () => (
     justifyContent="center"
     alignContent="center"
     minHeight="100vh"
+    gridColumn="1 / -1"
+    gridRow="1 / -1"
   >
     <Logo mb={8} />
     <Box component="form" display="grid" gap={2} minWidth={312}>

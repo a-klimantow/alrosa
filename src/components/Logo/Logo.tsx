@@ -8,7 +8,13 @@ interface LogoProps extends BoxProps {
 }
 
 export const Logo = React.memo<LogoProps>(({ small = false, ...props }) => (
-  <Box display="inline-grid" justifyItems="center" gap={1} {...props}>
+  <Box
+    display="inline-grid"
+    justifyItems="center"
+    alignItems="center"
+    gap={1}
+    {...props}
+  >
     <img
       src={logo_img}
       alt="Логотип компании АЛРОСА"

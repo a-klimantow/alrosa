@@ -31,7 +31,7 @@ export const Field = observer<FieldProps>(
       () =>
         isPassword ? (
           <ToggleButton hidden={field.hidden} onClick={field.toggle} />
-        ) : null,
+        ) : null, 
       [isPassword, field]
     )
 

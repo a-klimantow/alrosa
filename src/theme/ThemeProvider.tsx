@@ -8,7 +8,22 @@ import {
 export const ThemeProvider: React.FC = ({ children }) => (
   <Provider
     theme={createTheme({
+      typography: {
+        caption: {
+          fontSize: 11,
+          lineHeight: "16px",
+          fontWeight: 500,
+          color: "#9FA2B4",
+        },
+        body2: {
+          fontSize: 13,
+          lineHeight: "16px",
+        },
+      },
       palette: {
+        text: {
+          primary: "#31434E",
+        },
         background: {
           default: "#F7F8FC",
         },
@@ -38,6 +53,16 @@ export const ThemeProvider: React.FC = ({ children }) => (
           },
           defaultProps: {
             size: "small",
+          },
+        },
+        MuiPaper: {
+          styleOverrides: {
+            root: {
+              overflow: "hidden",
+            },
+          },
+          defaultProps: {
+            variant: "outlined",
           },
         },
       },
