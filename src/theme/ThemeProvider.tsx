@@ -43,13 +43,15 @@ export const ThemeProvider: React.FC = ({ children }) => (
           styleOverrides: {
             root: {
               background: "#fff",
-              letterSpacing: "0.5em",
+              letterSpacing: "0.2em",
             },
           },
         },
         MuiOutlinedInput: {
           styleOverrides: {
-            adornedEnd: { padding: 0 },
+            adornedEnd: {
+              padding: 0,
+            },
           },
           defaultProps: {
             size: "small",

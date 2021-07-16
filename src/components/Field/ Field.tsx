@@ -1,22 +1,15 @@
 import React from "react"
-import {
-  InputLabel,
-  OutlinedInput,
-  OutlinedInputProps,
-  Box,
-} from "@material-ui/core"
-import { withStyles } from "@material-ui/styles"
+import { TextField, TextFieldProps, Typography, Box } from "@material-ui/core"
 import { observer, useLocalObservable } from "mobx-react-lite"
 
 import { ToggleButton } from "./ToggleButton"
 
-interface FieldProps extends OutlinedInputProps {
-  label?: string
+type FieldProps = TextFieldProps & {
   isPassword?: boolean
 }
 
 export const Field = observer<FieldProps>(
-  ({ isPassword = false, label, value, onChange, name }) => {
+  ({ isPassword = false, label, ...props }) => {
     const field = useLocalObservable(() => ({
       hidden: Boolean(isPassword),
       toggle() {
@@ -27,38 +20,26 @@ export const Field = observer<FieldProps>(
       },
     }))
 
-    const adorment = React.useMemo(
-      () =>
-        isPassword ? (
-          <ToggleButton hidden={field.hidden} onClick={field.toggle} />
-        ) : null, 
-      [isPassword, field]
-    )
+    const adorment = isPassword ? (
+      <ToggleButton hidden={field.hidden} onClick={field.toggle} />
+    ) : null
 
     return (
-      <Box display="grid" gap={0.5}>
-        {label ? <InputLabel>{label}</InputLabel> : null}
-        <OutlinedInputStyled
+      <Box display="grid">
+        <Typography
+          variant="caption"
+          fontSize={13}
+          lineHeight="24px"
+          fontWeight={500}
+        >
+          {label}
+        </Typography>
+        <TextField
           type={field.type}
-          endAdornment={adorment}
-          value={value}
-          onChange={onChange}
-          name={name}
+          InputProps={{ endAdornment: adorment }}
+          {...props}
         />
       </Box>
     )
   }
 )
-
-const OutlinedInputStyled = withStyles({
-  root: {
-    letterSpacing: "0.2em",
-
-    "&:focus-within": {
-      borderColor: "red",
-    },
-  },
-  adornedEnd: {
-    padding: 0,
-  },
-})(OutlinedInput)
