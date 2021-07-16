@@ -21,7 +21,11 @@ export const Field = observer<FieldProps>(
     }))
 
     const adorment = isPassword ? (
-      <ToggleButton hidden={field.hidden} onClick={field.toggle} />
+      <ToggleButton
+        hidden={field.hidden}
+        onClick={field.toggle}
+        disabled={props.disabled}
+      />
     ) : null
 
     return (

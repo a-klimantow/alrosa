@@ -31,7 +31,34 @@ export const ThemeProvider: React.FC = ({ children }) => (
           main: "#0078FF",
         },
       },
+
       components: {
+        MuiCssBaseline: {
+          styleOverrides: `
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: blue orange;
+          }
+
+
+          *::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+          }
+
+          *::-webkit-scrollbar-track {
+            background: #DFE0EB;
+            border: 2px solid #fff;
+            
+          }
+
+          *::-webkit-scrollbar-thumb {
+            background-color: #0078FF;
+            border-radius: 20px;
+            border: 1px solid #fff;
+          }
+          `,
+        },
         MuiButton: {
           styleOverrides: {
             root: {
@@ -44,6 +71,15 @@ export const ThemeProvider: React.FC = ({ children }) => (
             root: {
               background: "#fff",
               letterSpacing: "0.2em",
+            },
+          },
+        },
+
+        MuiFormHelperText: {
+          styleOverrides: {
+            root: {
+              position: "absolute",
+              bottom: -16,
             },
           },
         },
