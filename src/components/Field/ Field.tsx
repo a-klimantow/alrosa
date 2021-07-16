@@ -1,3 +1,4 @@
+import React from "react"
 import {
   InputLabel,
   OutlinedInput,
@@ -15,7 +16,7 @@ interface FieldProps extends OutlinedInputProps {
 }
 
 export const Field = observer<FieldProps>(
-  ({ isPassword = false, label, ...props }) => {
+  ({ isPassword = false, label, value, onChange, name }) => {
     const field = useLocalObservable(() => ({
       hidden: Boolean(isPassword),
       toggle() {
@@ -26,17 +27,23 @@ export const Field = observer<FieldProps>(
       },
     }))
 
+    const adorment = React.useMemo(
+      () =>
+        isPassword ? (
+          <ToggleButton hidden={field.hidden} onClick={field.toggle} />
+        ) : null,
+      [isPassword, field]
+    )
+
     return (
       <Box display="grid" gap={0.5}>
-        <InputLabel>{label}</InputLabel>
+        {label ? <InputLabel>{label}</InputLabel> : null}
         <OutlinedInputStyled
           type={field.type}
-          endAdornment={
-            isPassword ? (
-              <ToggleButton hidden={field.hidden} onClick={field.toggle} />
-            ) : null
-          }
-          {...props}
+          endAdornment={adorment}
+          value={value}
+          onChange={onChange}
+          name={name}
         />
       </Box>
     )
