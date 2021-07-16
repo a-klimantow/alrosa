@@ -10,7 +10,7 @@ export const LoginPage = () => (
     minHeight="100vh"
   >
     <Logo mb={8} />
-    <Box component="form" display="grid" gap={2}>
+    <Box component="form" display="grid" gap={2} minWidth={312}>
       <Typography component="h1" variant="h6" fontWeight={700}>
         Авторизация
       </Typography>
