@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite"
 import { BlockList, BlockListItem } from "components"
 
-import { useConTractBlock } from "./store"
+import { useConTractBlock } from "./useContractsBlock"
 
 export const ContractsBlock = observer(() => {
   const { items, total } = useConTractBlock()

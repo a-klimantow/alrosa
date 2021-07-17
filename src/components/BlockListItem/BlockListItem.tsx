@@ -1,8 +1,8 @@
 import React from "react"
-import { Box, Typography, styled } from "@material-ui/core"
+import { Typography } from "@material-ui/core"
 
-import { MiniView } from "components"
-import { Block, Description } from "./styled"
+import { MiniView, Status } from "components"
+import { Block, Header, Description } from "./styled"
 
 interface BlockListItemProps {
   number?: string
@@ -19,13 +19,13 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({
   completionDate,
   price,
   text,
+  status,
 }) => (
   <Block>
-    <Box display="flex">
-      <Typography color="primary" mr="auto">
-        № {number}
-      </Typography>
-    </Box>
+    <Header>
+      <Typography color="primary">№ {number}</Typography>
+      <Status data-status={status || null} />
+    </Header>
     <Description variant="body2">{text}</Description>
     <MiniView createDate={createDate} />
     <MiniView completionDate={completionDate} />

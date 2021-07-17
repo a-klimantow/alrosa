@@ -69,3 +69,13 @@ export interface LoginSuccess extends AxiosResponse {
     token_type: string
   }
 }
+
+export interface IResponse<T> {
+  total: 0
+  items: T[]
+}
+
+export type GetResponseType =
+  | IResponse<BidType>
+  | IResponse<ComplaintType>
+  | IResponse<ContractType>

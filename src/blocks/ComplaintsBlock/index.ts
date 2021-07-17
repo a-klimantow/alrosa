@@ -1,0 +1,1 @@
+export { ComplaintsBlock } from "./ComplaintsBlock"

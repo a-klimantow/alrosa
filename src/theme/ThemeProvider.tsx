@@ -30,6 +30,18 @@ export const ThemeProvider: React.FC = ({ children }) => (
         primary: {
           main: "#0078FF",
         },
+        info: {
+          main: "#0078FF",
+          light: "#EBF2FF",
+        },
+        warning: {
+          main: "#B88217",
+          light: "#FFEFD1",
+        },
+        success: {
+          main: "#00A510",
+          light: "#ECF7ED",
+        },
       },
 
       components: {
@@ -42,13 +54,13 @@ export const ThemeProvider: React.FC = ({ children }) => (
 
 
           *::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 4px;
+            height: 4px;
           }
 
           *::-webkit-scrollbar-track {
             background: #DFE0EB;
-            border: 2px solid #fff;
+            border: 1px solid #fff;
             
           }
 
