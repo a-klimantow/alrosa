@@ -1,9 +1,9 @@
 import { Paper, Box } from "@material-ui/core"
-import { PageLayout, BlockList } from "components"
+import { PageLayout, BlockList, ContractsBlock } from "components"
 
 export const HomePage = () => (
   <PageLayout data-home>
-    <BlockList />
+    <ContractsBlock />
     <BlockList />
     <BlockList />
     <Paper component={Box} gridColumn="1 / -1">

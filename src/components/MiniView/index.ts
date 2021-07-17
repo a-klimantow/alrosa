@@ -1,0 +1,1 @@
+export { MiniView } from "./MiniView"

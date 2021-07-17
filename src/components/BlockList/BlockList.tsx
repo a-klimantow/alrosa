@@ -2,7 +2,6 @@ import React from "react"
 import { Paper, Box, styled, Typography, IconButton } from "@material-ui/core"
 
 import { Icon } from "components"
-import { BlockListItem } from "./BlockListItem"
 
 interface BlockListProps {
   title?: string
@@ -12,8 +11,8 @@ interface BlockListProps {
 
 export const BlockList: React.FC<BlockListProps> = ({
   children,
-  title = "test",
-  total = 10,
+  title,
+  total,
   onAddClick,
 }) => (
   <Paper component={Box} display="grid" gridTemplateRows="auto auto 1fr">
@@ -33,11 +32,6 @@ export const BlockList: React.FC<BlockListProps> = ({
     {/* content */}
     <Box overflow="auto" px={1}>
       {children}
-      <BlockListItem />
-      <BlockListItem />
-      <BlockListItem />
-      <BlockListItem />
-      <BlockListItem />
     </Box>
   </Paper>
 )

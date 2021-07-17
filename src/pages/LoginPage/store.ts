@@ -1,12 +1,12 @@
 import React from "react"
 import { useLocalObservable } from "mobx-react-lite"
-import { useHistory } from "react-router-dom"
-import axios from "axios"
+
+import { useFetch } from "hooks"
 
 const errorText = "Неправильно введен логин или пароль"
 
 export const useLogin = () => {
-  const { push } = useHistory()
+  const fetch = useFetch()
   return useLocalObservable(() => ({
     contract: "",
     password: "",
@@ -26,7 +26,12 @@ export const useLogin = () => {
     submit(e: React.FormEvent) {
       e.preventDefault()
       this.loading = true
-      this.login()
+      fetch.login(this.data)
+    },
+
+    testData() {
+      this.contract = "doc-14.07.2021"
+      this.password = "1"
     },
 
     get buttonDisable() {
@@ -37,17 +42,10 @@ export const useLogin = () => {
       return this.error ? errorText : ""
     },
 
-    async login() {
-      try {
-        const res = await axios.post("/api/v1/auth/login", {
-          contract: this.contract,
-          password: this.password,
-        })
-        console.log(res)
-      } catch (error) {
-        this.loading = false
-        this.error = true
-        push("/")
+    get data() {
+      return {
+        contract: btoa(this.contract),
+        password: btoa(this.password),
       }
     },
   }))

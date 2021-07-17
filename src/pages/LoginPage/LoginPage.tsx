@@ -57,6 +57,9 @@ export const LoginPage = observer(() => {
           </Box>
         </Box>
       </Box>
+      <Button style={{ position: "fixed" }} onClick={login.testData}>
+        test
+      </Button>
       {login.loading ? (
         <LinearProgress
           style={{ position: "fixed", bottom: 0, left: 0, right: 0 }}

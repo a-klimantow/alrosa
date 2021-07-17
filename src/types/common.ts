@@ -1,3 +1,5 @@
+import { AxiosResponse } from "axios"
+
 interface FileType {
   id: number
   name: string
@@ -12,6 +14,11 @@ export interface ContractType {
   completionDate: string
   price: number
   files: FileType[]
+}
+
+export interface ContractResponseType {
+  items: ContractType[]
+  total: number
 }
 
 export interface ComplaintType {
@@ -54,4 +61,11 @@ interface AddresType {
   street: string
   building: string
   floor: string
+}
+
+export interface LoginSuccess extends AxiosResponse {
+  data: {
+    access_token: string
+    token_type: string
+  }
 }

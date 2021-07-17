@@ -25,7 +25,7 @@ export const AppMenuTheme: React.FC = ({ children }) => {
                 flex: 1,
                 flexDirection: "column",
 
-                "& > li:nth-last-child(2)": {
+                "& > li:nth-last-of-type(2)": {
                   marginTop: "auto",
                 },
               },
