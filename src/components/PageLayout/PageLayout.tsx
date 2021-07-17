@@ -6,7 +6,8 @@ export const PageLayout = styled(Box)(({ theme }) => ({
   padding: theme.spacing(2),
 
   "&[data-home]": {
+    maxHeight: "calc(100vh - 64px)",
     gridTemplateColumns: "repeat(3, 1fr)",
-    gridTemplateRows: "calc((100vh - 64px - 16px - 8px) / 2) ",
+    gridTemplateRows: "repeat(2, 1fr) ",
   },
 }))
