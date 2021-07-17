@@ -1,6 +1,8 @@
 import React from "react"
 import { Box, Typography } from "@material-ui/core"
 
+import { money } from "utils"
+
 interface MiniViewProps {
   price?: number
   createDate?: string
@@ -23,8 +25,3 @@ export const MiniView = React.memo<MiniViewProps>(
     </Box>
   )
 )
-
-const money = new Intl.NumberFormat("ru-Ru", {
-  style: "currency",
-  currency: "RUB",
-})

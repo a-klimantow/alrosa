@@ -1,6 +1,6 @@
 import { styled } from "@material-ui/core"
 
-export const AppLayout = styled("div")({
+export const AppLayout = styled("div")(({ theme }) => ({
   minHeight: "100vh",
   display: "grid",
   gridTemplateRows: "auto 1fr",
@@ -9,4 +9,14 @@ export const AppLayout = styled("div")({
     "M H"
     "M ."
   `,
-})
+
+  [`${theme.breakpoints.down("md")}`]: {
+    gridTemplateAreas: `
+    "H"
+    "."
+    "M"
+  `,
+    gridTemplateColumns: "auto",
+    gridTemplateRows: "auto",
+  },
+}))

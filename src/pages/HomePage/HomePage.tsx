@@ -1,14 +1,13 @@
-import { Paper, Box } from "@material-ui/core"
 import { PageLayout } from "components"
-import { ContractsBlock, BidsBlock, ComplaintsBlock } from "blocks"
+import { ContractsBlock, BidsBlock, ComplaintsBlock, BillsBlock } from "blocks"
 
 export const HomePage = () => (
   <PageLayout data-home>
     <ContractsBlock />
+    <ContractsBlock />
+    <ContractsBlock />
     <BidsBlock />
     <ComplaintsBlock />
-    <Paper component={Box} gridColumn="1 / -1">
-      table
-    </Paper>
+    <BillsBlock />
   </PageLayout>
 )

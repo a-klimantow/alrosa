@@ -40,7 +40,7 @@ export interface BidType {
 export interface BillType {
   id: number
   favorite: boolean
-  createDate: Date
+  createDate: string
   number: string
   name: string
   price: number

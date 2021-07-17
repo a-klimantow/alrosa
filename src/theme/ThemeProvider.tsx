@@ -19,6 +19,11 @@ export const ThemeProvider: React.FC = ({ children }) => (
           fontSize: 13,
           lineHeight: "16px",
         },
+        h6: {
+          fontSize: 16,
+          lineHeight: "24px",
+          fontWeight: 600,
+        },
       },
       palette: {
         text: {
@@ -113,6 +118,24 @@ export const ThemeProvider: React.FC = ({ children }) => (
           },
           defaultProps: {
             variant: "outlined",
+          },
+        },
+        MuiSelect: {
+          styleOverrides: {
+            select: {
+              display: "flex",
+              gap: 8,
+              letterSpacing: "0.05em",
+              border: "1px solid transparent",
+            },
+          },
+        },
+        MuiMenuItem: {
+          styleOverrides: {
+            root: {
+              display: "flex",
+              gap: 8,
+            },
           },
         },
       },

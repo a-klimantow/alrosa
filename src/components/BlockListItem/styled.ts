@@ -13,6 +13,10 @@ export const Block = styled(Box)(({ theme }) => ({
   borderBottom: "1px solid",
   borderBottomColor: theme.palette.divider,
   padding: theme.spacing(1, 0),
+
+  [`${theme.breakpoints.down("md")}`]: {
+    gridColumnGap: 2,
+  },
 }))
 
 export const Header = styled(Box)({

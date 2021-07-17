@@ -9,5 +9,12 @@ export const PageLayout = styled(Box)(({ theme }) => ({
     maxHeight: "calc(100vh - 64px)",
     gridTemplateColumns: "repeat(3, 1fr)",
     gridTemplateRows: "repeat(2, 1fr) ",
+
+    [`${theme.breakpoints.down("md")}`]: {
+      gridTemplateColumns: "1fr",
+      gridTemplateRows: "auto",
+      maxHeight: "unset",
+      padding: theme.spacing(1),
+    },
   },
 }))
