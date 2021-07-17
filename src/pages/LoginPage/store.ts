@@ -39,7 +39,7 @@ export const useLogin = () => {
 
     async login() {
       try {
-        const res = await axios.post("api/v1/auth/login", {
+        const res = await axios.post("/api/v1/auth/login", {
           contract: this.contract,
           password: this.password,
         })
