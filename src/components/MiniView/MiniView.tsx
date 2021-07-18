@@ -18,8 +18,8 @@ export const MiniView = React.memo<MiniViewProps>(
         {price && "Стоимость"}
       </Typography>
       <Typography variant="body2" fontWeight={price ? 700 : 400}>
-        {createDate && new Date(createDate).toLocaleDateString()}
-        {completionDate && new Date(completionDate).toLocaleDateString()}
+        {createDate}
+        {completionDate}
         {price && money.format(price)}
       </Typography>
     </Box>

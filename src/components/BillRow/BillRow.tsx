@@ -27,7 +27,7 @@ export const BillRow = React.memo<BillRowProps>(
           )}
         </Box>
       </TableCell>
-      <TableCell>{new Date(createDate).toLocaleDateString()}</TableCell>
+      <TableCell>{createDate}</TableCell>
       <TableCell>
         <Typography color="primary" fontWeight={600} fontSize="inherit">
           {number}
