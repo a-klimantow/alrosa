@@ -1,7 +1,7 @@
 import { RouteProps } from "react-router-dom"
 
 import { IconType } from "components"
-import { NotFoundPage, HomePage, LoginPage } from "pages"
+import { NotFoundPage, HomePage, LoginPage, ContractsPage } from "pages"
 
 interface RouteItemType extends RouteProps {
   name: string
@@ -20,7 +20,7 @@ export const routes: RouteItemType[] = [
     name: "договора",
     path: "/contracts/",
     icon: "contract",
-    component: HomePage,
+    component: ContractsPage,
   },
   {
     path: "/bids/",
