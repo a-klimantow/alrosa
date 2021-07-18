@@ -7,9 +7,10 @@ enum Key {
   Type = "token_type",
 }
 
-type UrlStrType = "auth/login" | "contract"
-
-const url = (str: UrlStrType) => `/api/v1/${str}`
+const baseUrl =
+  process.env["NODE_ENV"] === "development"
+    ? ""
+    : "https://alros.baccasoft.ru/server"
 
 export const useFetch = () => {
   const { push } = useHistory()
@@ -24,7 +25,10 @@ export const useFetch = () => {
   return {
     async login(data: { contract: string; password: string }) {
       try {
-        const res: LoginSuccess = await axios.post(url("auth/login"), data)
+        const res: LoginSuccess = await axios.post(
+          `${baseUrl}/api/v1/auth/login`,
+          data
+        )
         const { access_token, token_type } = res.data
 
         localStorage.setItem(Key.Access, access_token)
@@ -35,7 +39,7 @@ export const useFetch = () => {
     },
 
     async get<T>(url: string): Promise<T> {
-      const response = await fetch(`/api/v1/${url}`, { headers })
+      const response = await fetch(`${baseUrl}/api/v1/${url}`, { headers })
       const { error, ...data } = await response.json()
 
       if (response.ok) {
