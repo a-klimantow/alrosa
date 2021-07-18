@@ -2,10 +2,10 @@ import { Typography, Button, Box, LinearProgress } from "@material-ui/core"
 import { observer } from "mobx-react-lite"
 
 import { Field, Logo } from "components"
-import { useLogin } from "./store"
+import { useLoginPage } from "./useLoginPage"
 
 export const LoginPage = observer(() => {
-  const login = useLogin()
+  const login = useLoginPage()
   return (
     <>
       <Box

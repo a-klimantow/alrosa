@@ -24,7 +24,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({
   <Block>
     <Header>
       <Typography color="primary">№ {number}</Typography>
-      <Status data-status={status || null} />
+      <Status status={status} />
     </Header>
     <Description variant="body2">{text}</Description>
     <MiniView createDate={createDate} />

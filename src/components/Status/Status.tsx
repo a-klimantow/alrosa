@@ -1,6 +1,15 @@
+import React from "react"
 import { styled, Box } from "@material-ui/core"
 
-export const Status = styled(Box)(({ theme }) => ({
+interface StatusProps {
+  status?: string
+}
+
+export const Status = React.memo<StatusProps>(({ status }) =>
+  status ? <StatusStyled data-status={status} /> : null
+)
+
+export const StatusStyled = styled(Box)(({ theme }) => ({
   "&[data-status]": {
     fontSize: 11,
     lineHeight: "16px",

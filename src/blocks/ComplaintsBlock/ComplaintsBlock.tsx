@@ -1,22 +1,32 @@
 import { observer } from "mobx-react-lite"
-import { BlockList, BlockListItem } from "components"
+import {
+  Divider,
+  SectionWrap,
+  SectionHeader,
+  DataList,
+  DataListItem,
+} from "components"
 
-import { useComplaintsBlock } from "./useComplaintsBlock"
+import { useComplaints } from "hooks"
 
 export const ComplaintsBlock = observer(() => {
-  const { items, total } = useComplaintsBlock()
+  const complaints = useComplaints()
 
   return (
-    <BlockList title="Жалобы" total={total} onAddClick={() => null}>
-      {items.map(({ id, number, description, createDate, status }) => (
-        <BlockListItem
-          key={id}
-          number={number}
-          text={description}
-          createDate={createDate}
-          status={status}
-        />
-      ))}
-    </BlockList>
+    <SectionWrap>
+      <SectionHeader name="Жалобы" total={complaints.total} />
+      <Divider />
+      <DataList>
+        {complaints.items.map((item) => (
+          <DataListItem
+            key={item.id}
+            size="small"
+            number={item.number}
+            text={item.description}
+            createDate={item.createDate}
+          />
+        ))}
+      </DataList>
+    </SectionWrap>
   )
 })

@@ -1,25 +1,34 @@
 import { observer } from "mobx-react-lite"
-import { BlockList, BlockListItem } from "components"
+import {
+  Divider,
+  SectionWrap,
+  SectionHeader,
+  DataList,
+  DataListItem,
+} from "components"
 
 import { useConTractBlock } from "./useContractsBlock"
 
 export const ContractsBlock = observer(() => {
-  const { items, total } = useConTractBlock()
+  const contract = useConTractBlock()
 
   return (
-    <BlockList title="Договора" total={total}>
-      {items.map(
-        ({ id, number, description, createDate, completionDate, price }) => (
-          <BlockListItem
-            key={id}
-            number={number}
-            text={description}
-            createDate={createDate}
-            completionDate={completionDate}
-            price={price}
+    <SectionWrap>
+      <SectionHeader name="Договора" total={contract.total} />
+      <Divider />
+      <DataList>
+        {contract.items.map((item) => (
+          <DataListItem
+            key={item.id}
+            size="small"
+            number={item.number}
+            text={item.description}
+            createDate={item.createDate}
+            completionDate={item.completionDate}
+            price={item.price}
           />
-        )
-      )}
-    </BlockList>
+        ))}
+      </DataList>
+    </SectionWrap>
   )
 })

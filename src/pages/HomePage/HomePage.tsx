@@ -2,7 +2,7 @@ import { PageLayout } from "components"
 import { ContractsBlock, BidsBlock, ComplaintsBlock, BillsBlock } from "blocks"
 
 export const HomePage = () => (
-  <PageLayout data-home>
+  <PageLayout data-layout="home">
     <ContractsBlock />
     <BidsBlock />
     <ComplaintsBlock />

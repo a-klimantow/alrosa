@@ -1,12 +1,14 @@
 import React from "react"
 import { useLocalObservable } from "mobx-react-lite"
+import { useHistory } from "react-router-dom"
 
-import { useFetch } from "hooks"
+import { useRequest } from "hooks"
 
 const errorText = "Неправильно введен логин или пароль"
 
-export const useLogin = () => {
-  const fetch = useFetch()
+export const useLoginPage = () => {
+  const { push } = useHistory()
+  const request = useRequest({ url: "auth/login", method: "post" })
   return useLocalObservable(() => ({
     contract: "",
     password: "",
@@ -26,7 +28,16 @@ export const useLogin = () => {
     submit(e: React.FormEvent) {
       e.preventDefault()
       this.loading = true
-      fetch.login(this.data)
+      request
+        .send({ contract: btoa(this.contract) })
+        .send({ password: btoa(this.password) })
+        .then(() => push("/"))
+        .catch((e) => {
+          if (e.status === 401) {
+            this.error = true
+            this.loading = false
+          }
+        })
     },
 
     testData() {
@@ -43,10 +54,10 @@ export const useLogin = () => {
     },
 
     get data() {
-      return {
+      return JSON.stringify({
         contract: btoa(this.contract),
         password: btoa(this.password),
-      }
+      })
     },
   }))
 }
