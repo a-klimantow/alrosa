@@ -1,33 +1,17 @@
-import { List, Paper, Hidden } from "@material-ui/core"
+import { Hidden } from "@material-ui/core"
 
-import { useDesktopMenu } from "hooks"
-import { Logo } from "components"
-import { AppMenuTheme } from "./AppMenuTheme"
-import { AppMenuItem } from "./AppMenuItem"
-import { AppMenuMobile } from "./AppMenuMobile"
+import { DesktopMenu } from "./DesktopMenu"
+import { MobileMenu } from "./MobileMenu"
 
 export const AppMenu = () => {
-  const menu = useDesktopMenu()
   return (
     <>
       <Hidden mdDown>
-        <AppMenuTheme>
-          <Paper square>
-            <Logo small />
-            <List>
-              {menu.map(([path, icon, tooltip]) => (
-                <AppMenuItem
-                  key={path}
-                  icon={icon}
-                  to={path}
-                  tooltip={tooltip}
-                />
-              ))}
-            </List>
-          </Paper>
-        </AppMenuTheme>
+        <DesktopMenu />
       </Hidden>
-      <AppMenuMobile />
+      <Hidden mdUp>
+        <MobileMenu />
+      </Hidden>
     </>
   )
 }

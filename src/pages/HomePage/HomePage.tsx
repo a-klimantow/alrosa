@@ -4,8 +4,6 @@ import { ContractsBlock, BidsBlock, ComplaintsBlock, BillsBlock } from "blocks"
 export const HomePage = () => (
   <PageLayout data-home>
     <ContractsBlock />
-    <ContractsBlock />
-    <ContractsBlock />
     <BidsBlock />
     <ComplaintsBlock />
     <BillsBlock />

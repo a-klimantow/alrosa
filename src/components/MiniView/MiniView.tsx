@@ -11,7 +11,7 @@ interface MiniViewProps {
 
 export const MiniView = React.memo<MiniViewProps>(
   ({ price, createDate, completionDate }) => (
-    <Box display="flex" flexDirection="column" gap={0.5}>
+    <Box display="flex" flexDirection="column" gap={0.5} justifySelf="center">
       <Typography variant="caption">
         {createDate && "Дата создания"}
         {completionDate && "Срок исполнения"}

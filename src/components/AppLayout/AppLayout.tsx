@@ -17,6 +17,6 @@ export const AppLayout = styled("div")(({ theme }) => ({
     "M"
   `,
     gridTemplateColumns: "auto",
-    gridTemplateRows: "auto",
+    gridTemplateRows: `${theme.spacing(8)} 1fr ${theme.spacing(8)}`,
   },
 }))
