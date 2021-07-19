@@ -57,9 +57,7 @@ export const useHomePage = () => {
       requestBills.abort()
     },
     error(e: ErrorType) {
-      if (e.status === 403) {
-        push("/login/")
-      }
+      push("/login/")
     },
   }))
 
