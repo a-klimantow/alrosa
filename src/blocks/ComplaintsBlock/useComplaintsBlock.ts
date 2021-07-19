@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useLocalObservable } from "mobx-react-lite"
 
-import { ComplaintType, IResponse } from "types"
+import { ComplaintType } from "types"
 import { useFetch } from "hooks"
 
 export const useComplaintsBlock = () => {
@@ -14,9 +14,7 @@ export const useComplaintsBlock = () => {
 
     async getData() {
       try {
-        const { items, total } = await get<IResponse<ComplaintType>>(
-          "complaint"
-        )
+        const { items, total } = await get("complaint")
         this.items = items
         this.total = total
       } catch (error) {}

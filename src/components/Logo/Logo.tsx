@@ -1,5 +1,6 @@
 import React from "react"
 import { Box, BoxProps } from "@material-ui/core"
+
 import logo_img from "./logo_img.svg"
 import logo_text from "./logo_text.svg"
 
@@ -9,17 +10,21 @@ interface LogoProps extends BoxProps {
 
 export const Logo = React.memo<LogoProps>(({ small = false, ...props }) => (
   <Box
-    display="inline-grid"
-    justifyItems="center"
-    alignItems="center"
-    gap={1}
-    {...props}
+    sx={{
+      display: "inline-grid",
+      placeContent: "center",
+      placeItems: "center",
+      gap: 1,
+    }}
   >
-    <img
+    <Box
+      component="img"
       src={logo_img}
       alt="Логотип компании АЛРОСА"
-      width={small ? 40 : ""}
-      height={small ? 23 : ""}
+      sx={{
+        width: small ? 40 : "unset",
+        height: small ? 23 : "unset",
+      }}
     />
     {!small ? <img src={logo_text} alt="АЛРОСА" /> : null}
   </Box>

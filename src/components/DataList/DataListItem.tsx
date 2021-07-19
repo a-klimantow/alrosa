@@ -1,7 +1,7 @@
 import React from "react"
 import { styled, Box, Typography } from "@material-ui/core"
 
-import { Status, DataInfoList, DataFiles } from "components"
+import { Status, DataInfoList } from "components"
 
 interface DataListItemProps {
   number?: string
@@ -27,7 +27,6 @@ export const DataListItem = React.memo<DataListItemProps>(
           {text}
         </Typography>
         <DataInfoList size={size} area="info" {...info} />
-        {/* <DataFiles /> */}
       </DataListItemStyled>
     )
   }

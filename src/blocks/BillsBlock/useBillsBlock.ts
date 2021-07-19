@@ -1,7 +1,7 @@
 import React from "react"
 import { useLocalObservable } from "mobx-react-lite"
 
-import { BillType, IResponse } from "types"
+import { BillType } from "types"
 import { useFetch, useSort } from "hooks"
 import { OptionItemType } from "components"
 
@@ -60,7 +60,7 @@ export const useBidsBlock = () => {
 
     async getData() {
       try {
-        const { items, total } = await get<IResponse<BillType>>("bill")
+        const { items, total } = await get("bill")
         this.items = items
         this.total = total
       } catch (error) {}

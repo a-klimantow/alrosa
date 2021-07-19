@@ -1,4 +1,5 @@
 import superagent from "superagent"
+import { Keys } from "utils"
 
 type Params = {
   url: string
@@ -6,8 +7,8 @@ type Params = {
 }
 
 export const useRequest = ({ url, method = "get" }: Params) => {
-  const type = localStorage.getItem("token_type")
-  const token = localStorage.getItem("access_token")
+  const type = localStorage.getItem(Keys.Type)
+  const token = localStorage.getItem(Keys.Token)
 
   return superagent[method](`/api/v1/${url}`)
     .type("application/json")

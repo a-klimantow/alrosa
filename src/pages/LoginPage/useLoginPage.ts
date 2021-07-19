@@ -2,9 +2,9 @@ import React from "react"
 import { useLocalObservable } from "mobx-react-lite"
 import { useHistory } from "react-router-dom"
 
+import { LoginDataType } from "types"
+import { Keys } from "utils"
 import { useRequest } from "hooks"
-
-const errorText = "Неправильно введен логин или пароль"
 
 export const useLoginPage = () => {
   const { push } = useHistory()
@@ -12,15 +12,16 @@ export const useLoginPage = () => {
   return useLocalObservable(() => ({
     contract: "",
     password: "",
+    hiddenPass: true,
     loading: false,
     error: false,
 
-    chagheContract(e: React.ChangeEvent<HTMLInputElement>) {
+    changeContract(e: React.ChangeEvent<HTMLInputElement>) {
       this.contract = e.target.value
       this.error = false
     },
 
-    chaghePassword(e: React.ChangeEvent<HTMLInputElement>) {
+    changePassword(e: React.ChangeEvent<HTMLInputElement>) {
       this.password = e.target.value
       this.error = false
     },
@@ -31,7 +32,11 @@ export const useLoginPage = () => {
       request
         .send({ contract: btoa(this.contract) })
         .send({ password: btoa(this.password) })
-        .then(() => push("/"))
+        .then(({ body }: { body: LoginDataType }) => {
+          localStorage.setItem(Keys.Token, body.access_token)
+          localStorage.setItem(Keys.Type, body.token_type)
+          push("/")
+        })
         .catch((e) => {
           if (e.status === 401) {
             this.error = true
@@ -40,17 +45,16 @@ export const useLoginPage = () => {
         })
     },
 
-    testData() {
-      this.contract = "doc-14.07.2021"
-      this.password = "1"
+    toggleHiddenPass() {
+      this.hiddenPass = !this.hiddenPass
     },
 
-    get buttonDisable() {
+    get disabled() {
       return !Boolean(this.contract) || !Boolean(this.password) || this.loading
     },
 
-    get helpText() {
-      return this.error ? errorText : ""
+    get errText() {
+      return this.error ? "Неправильно введен логин или пароль" : ""
     },
 
     get data() {
@@ -59,5 +63,11 @@ export const useLoginPage = () => {
         password: btoa(this.password),
       })
     },
+
+    get typeField() {
+      return this.hiddenPass ? "password" : "text"
+    },
   }))
 }
+
+// doc-14.07.2021

@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useLocalObservable } from "mobx-react-lite"
 
-import { ContractType, IResponse } from "types"
+import { ContractType } from "types"
 import { useFetch } from "hooks"
 
 export const useConTractBlock = () => {
@@ -14,7 +14,7 @@ export const useConTractBlock = () => {
 
     async getData() {
       try {
-        const { items, total } = await get<IResponse<ContractType>>("contract")
+        const { items, total } = await get("contract")
         this.total = total
         this.items = items
       } catch (error) {}

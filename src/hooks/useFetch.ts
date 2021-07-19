@@ -1,6 +1,5 @@
 import { useHistory } from "react-router-dom"
 import axios from "axios"
-import { LoginSuccess } from "types"
 
 enum Key {
   Access = "access_token",
@@ -25,10 +24,7 @@ export const useFetch = () => {
   return {
     async login(data: { contract: string; password: string }) {
       try {
-        const res: LoginSuccess = await axios.post(
-          `${baseUrl}/api/v1/auth/login`,
-          data
-        )
+        const res = await axios.post(`${baseUrl}/api/v1/auth/login`, data)
         const { access_token, token_type } = res.data
 
         localStorage.setItem(Key.Access, access_token)

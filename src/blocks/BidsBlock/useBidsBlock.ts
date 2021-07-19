@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useLocalObservable } from "mobx-react-lite"
 
-import { BidType, IResponse } from "types"
+import { BidType } from "types"
 import { useFetch } from "hooks"
 
 export const useBidsBlock = () => {
@@ -14,7 +14,7 @@ export const useBidsBlock = () => {
 
     async getData() {
       try {
-        const { items, total } = await get<IResponse<BidType>>("bid")
+        const { items, total } = await get("bid")
         this.items = items
         this.total = total
       } catch (error) {}
