@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, CSSProperties } from "react"
 import {
   Box,
   BoxProps,
@@ -6,6 +6,7 @@ import {
   Typography,
   IconButton,
   useTheme,
+  TypographyProps,
 } from "@material-ui/core"
 import { Icon } from "components"
 
@@ -51,6 +52,8 @@ export const Block: FC<BoxProps> = (props) => (
 type BlockHeaderProps = {
   name: string
   total: number
+  big?: boolean
+  colorTotal?: CSSProperties["color"]
   addClick?: () => void
   sortClick?: () => void
 }
@@ -58,18 +61,20 @@ export const BlockHeader: FC<BlockHeaderProps> = ({
   name,
   total,
   children,
+  big,
+  colorTotal = "primary",
 }) => (
   <Box
     sx={{
       display: "grid",
       gridTemplateColumns: "auto 1fr auto",
-      alignItems: "center",
+      alignItems: big ? "end" : "center",
       gap: 1,
       pl: 1,
     }}
   >
-    <Typography variant="h3">{name}</Typography>
-    <Typography component="span" color="primary">
+    <Typography variant={big ? "h2" : "h3"}>{name}</Typography>
+    <Typography component="span" color={colorTotal}>
       {total}
     </Typography>
     {children}
@@ -94,34 +99,105 @@ export const BlockList: FC = (props) => (
   <Box sx={{ display: "grid", overflow: "auto" }} {...props} />
 )
 
-export const BlockItem: FC<{ number: string; text: string; status?: string }> =
-  ({ children, number, text, status }) => (
-    <Box
-      sx={{
-        display: "grid",
-        gridAutoColumns: "1fr",
-        mx: 1,
-        py: 2,
-        gap: 1,
-        gridTemplateAreas: `
+type BlockItemProps = {
+  number: string
+  text: string
+  status?: string
+}
+export const BlockItem: FC<BlockItemProps> = ({
+  children,
+  number,
+  text,
+  status,
+}) => (
+  <Box
+    sx={{
+      display: "grid",
+      gridAutoColumns: "1fr",
+      mx: 1,
+      py: 2,
+      gap: 1,
+      gridTemplateAreas: `
           "A A C"
           "B B B"
           ". . ."
         `,
-        borderBottom: 1,
-        borderColor: "divider",
+      borderBottom: 1,
+      borderColor: "divider",
+    }}
+  >
+    <Typography color="primary" gridArea="A">
+      № {number}
+    </Typography>
+    <Status status={status} />
+    <Typography gridArea="B" variant="body2">
+      {text}
+    </Typography>
+    {children}
+  </Box>
+)
+
+type BlockItemNumberProps = {
+  number: string
+  status?: string
+  big?: boolean
+  gridArea?: string
+}
+
+export const BlockItemNumber: FC<BlockItemNumberProps> = ({
+  number,
+  status,
+  big,
+  gridArea,
+}) => (
+  <Box
+    sx={{
+      gridArea,
+
+      display: "grid",
+      gridTemplateColumns: "1fr auto",
+    }}
+  >
+    <Typography
+      color="primary"
+      sx={{
+        fontSize: big ? 19 : 13,
+        lineHeight: big ? "24px" : "16px",
       }}
     >
-      <Typography color="primary" gridArea="A">
-        № {number}
-      </Typography>
-      <Status status={status} />
-      <Typography gridArea="B" variant="body2">
-        {text}
-      </Typography>
-      {children}
-    </Box>
-  )
+      № {number}
+    </Typography>
+    <Status status={status} />
+  </Box>
+)
+
+type BlockItemTextProps = {
+  big?: boolean
+  text: string
+  gridArea?: string
+}
+
+export const BlockItemText: FC<BlockItemTextProps> = ({
+  big = false,
+  text,
+  gridArea,
+}) => (
+  <Typography
+    sx={{
+      gridArea,
+      display: "inline-grid",
+      "&::before": {
+        content: '"Объект поставки"',
+        fontSize: 12,
+        fontWeight: 500,
+        color: "grey.500",
+      },
+    }}
+    variant={big ? "body1" : "body2"}
+  >
+    {text}
+  </Typography>
+)
 
 export const BlockChip: FC<{ data: string[]; bold?: boolean }> = ({
   data,

@@ -72,7 +72,7 @@ export const HomePage = observer(() => {
       </Block>
       <Hidden mdDown>
         <Block gridArea="D">
-          <BlockHeader name="Счета на оплату" total={bill.total}>
+          <BlockHeader name="Счета на оплату" total={bill.total} colorTotal="">
             <SortMenu {...sort} />
           </BlockHeader>
           <Divider />

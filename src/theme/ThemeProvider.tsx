@@ -33,6 +33,10 @@ const palette: ThemeOptions["palette"] = {
 const typography: ThemeOptions["typography"] = {
   fontFamily: "'Inter', sans-serif",
   fontWeightBold: 600,
+  h2: {
+    fontSize: 32,
+    fontWeight: 600,
+  },
 
   h3: {
     fontSize: 16,

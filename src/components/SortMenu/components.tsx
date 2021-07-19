@@ -42,7 +42,9 @@ export const Wrap: FC = (props) => (
 )
 
 export const Label = () => (
-  <Typography variant="caption">Сортировать по:</Typography>
+  <Typography variant="caption" sx={{ fontSize: 13, letterSpacing: .5 }}>
+    Сортировать по:
+  </Typography>
 )
 
 export const Option: FC<OptionProps> = ({ sort, value, active }) => (
