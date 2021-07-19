@@ -7,7 +7,7 @@ import { Logo, Icon } from "components"
 export const DesktopMenu = () => {
   const menu = useGetMenu()
   return (
-    <MenuStyled>
+    <MenuStyled square>
       <Logo small />
       <List>
         {menu.long.map(({ to, icon, name }) => (

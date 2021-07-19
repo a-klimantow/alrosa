@@ -18,6 +18,7 @@ export const AppHeader = observer(() => {
 const Wrap: FC = (props) => (
   <Box
     component={Paper}
+    square
     sx={{
       gridArea: "H",
       display: "grid",
