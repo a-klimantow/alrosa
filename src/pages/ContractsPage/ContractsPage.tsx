@@ -1,6 +1,7 @@
 import { FC } from "react"
 import { observer } from "mobx-react-lite"
 import { Box, Typography } from "@material-ui/core"
+import { ContractType } from "types"
 
 import {
   PageLayout,
@@ -19,6 +20,7 @@ import {
   BlockItemNumber,
   BlockItemText,
 } from "pages/HomePage/components"
+import { PhotoSizeSelectActualSharp } from "@material-ui/icons"
 
 // =================
 
@@ -35,7 +37,9 @@ export const ContractsPage = observer(() => {
           <BlockItem key={c.id}>
             <BlockItemNumber number={c.number} big />
             <BlockItemText text={c.description} big />
-            <BlockItemFile />
+            {c.files.map(({ id, ...rest }) => (
+              <BlockItemFile key={id} {...rest} />
+            ))}
           </BlockItem>
         ))}
       </BlockList>
@@ -61,18 +65,40 @@ const BlockItem: FC = (props) => (
   />
 )
 
-const BlockItemFile = () => (
+type BlockItemFileProps = Omit<ContractType["files"][number], "id">
+
+const BlockItemFile: FC<BlockItemFileProps> = ({ name, size }) => (
   <Box
     sx={{
       display: "grid",
       gridTemplateColumns: "auto 1fr",
-      gap: 2,
+      columnGap: 2,
+      "& svg": {
+        gridRow: "span 2",
+      },
     }}
   >
     <Icon type="pdf" />
-    <Typography variant="body2" color="primary" >
-      fasf
+    <Typography
+      variant="body2"
+      color="primary"
+      sx={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 1,
+      }}
+    >
+      {name}
+      <Icon type="upload" />
     </Typography>
-    
+    <Typography
+      component="span"
+      sx={{
+        fontSize: 12,
+        color: "grey.500",
+      }}
+    >
+      {size}
+    </Typography>
   </Box>
 )

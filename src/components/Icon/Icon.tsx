@@ -226,4 +226,14 @@ const icons = {
       strokeLinejoin="round"
     />
   ),
+  upload: (
+    <svg>
+      <path
+        d="M12 16L16 12M12 16L8 12M12 16L12 4M19.5 11L19.5 17.5C19.5 18.6046 18.6046 19.5 17.5 19.5L6.5 19.5C5.39543 19.5 4.5 18.6046 4.5 17.5L4.5 11"
+        stroke="#0078FF"
+        fill="none"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
 }
