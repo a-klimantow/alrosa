@@ -6,7 +6,6 @@ import {
   Typography,
   IconButton,
   useTheme,
-  TypographyProps,
 } from "@material-ui/core"
 import { Icon } from "components"
 

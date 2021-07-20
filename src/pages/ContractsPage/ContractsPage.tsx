@@ -3,14 +3,7 @@ import { observer } from "mobx-react-lite"
 import { Box, Typography } from "@material-ui/core"
 import { ContractType } from "types"
 
-import {
-  PageLayout,
-  DataList,
-  DataListItem,
-  SortMenu,
-  useSortMenu,
-  Icon,
-} from "components"
+import { SortMenu, useSortMenu, Icon } from "components"
 import { useContracts } from "hooks"
 
 // разобрать ====================
@@ -20,7 +13,6 @@ import {
   BlockItemNumber,
   BlockItemText,
 } from "pages/HomePage/components"
-import { PhotoSizeSelectActualSharp } from "@material-ui/icons"
 
 // =================
 
