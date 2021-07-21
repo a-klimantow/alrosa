@@ -155,6 +155,22 @@ const components: ThemeOptions["components"] = {
       },
     },
   },
+  MuiTable: {
+    defaultProps: {
+      padding: "checkbox",
+      stickyHeader: true,
+    },
+  },
+  MuiTableCell: {
+    styleOverrides: {
+      head: {
+        color: "#9FA2B4",
+      },
+      stickyHeader: {
+        background: "#fff",
+      },
+    },
+  },
 }
 
 export const ThemeProvider: React.FC = ({ children }) => (

@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite"
 import { Hidden } from "@material-ui/core"
 
-import { SortMenu, useSortMenu, BillRow } from "components"
+import { SortMenu, useSortMenu, BillRow, BillsTable } from "components"
 import { Keys, money } from "utils"
 import {
   Page,
@@ -70,7 +70,8 @@ export const HomePage = observer(() => {
           ))}
         </BlockList>
       </Block>
-      <Hidden mdDown>
+      <BillsTable />
+      {/* <Hidden mdDown>
         <Block gridArea="D">
           <BlockHeader name="Счета на оплату" total={bill.total} colorTotal="">
             <SortMenu {...sort} />
@@ -91,7 +92,7 @@ export const HomePage = observer(() => {
             />
           ))}
         </Block>
-      </Hidden>
+      </Hidden> */}
     </Page>
   )
 })
