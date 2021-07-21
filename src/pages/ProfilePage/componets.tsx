@@ -107,10 +107,11 @@ export const PassBlock = observer(({ children }) => (
     <Box
       sx={{
         display: "grid",
-        alignItems: "center",
-        placeContent: "center",
+        placeSelf: "center",
+        placeItems: "center stretch",
         gridTemplateRows: "repeat(3, minmax(auto,15%)) minmax(auto,20%)",
-        gap:2
+        gap: 4,
+        maxHeight: 420,
       }}
     >
       {children}
