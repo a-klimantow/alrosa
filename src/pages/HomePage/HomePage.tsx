@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite"
 import { Hidden } from "@material-ui/core"
 
-import { SortMenu, useSortMenu, BillRow, BillsTable } from "components"
+import { BillsTable } from "components"
 import { Keys, money } from "utils"
 import {
   Page,
@@ -17,8 +17,7 @@ import {
 import { useHomePage } from "./useHomePage"
 
 export const HomePage = observer(() => {
-  const sort = useSortMenu()
-  const { contract, bid, complaint, bill } = useHomePage()
+  const { contract, bid, complaint } = useHomePage()
   return (
     <Page>
       <Block gridArea="A">
@@ -70,29 +69,9 @@ export const HomePage = observer(() => {
           ))}
         </BlockList>
       </Block>
-      <BillsTable />
-      {/* <Hidden mdDown>
-        <Block gridArea="D">
-          <BlockHeader name="Счета на оплату" total={bill.total} colorTotal="">
-            <SortMenu {...sort} />
-          </BlockHeader>
-          <Divider />
-          {bill.items.map((b) => (
-            <BillRow
-              key={b.id}
-              checked={true}
-              id={b.id}
-              createDate={b.createDate}
-              number={b.number}
-              name={b.name}
-              price={b.price}
-              favorite={b.favorite}
-              paid={b.paid}
-              onRowClick={() => null}
-            />
-          ))}
-        </Block>
-      </Hidden> */}
+      <Hidden mdDown>
+        <BillsTable />
+      </Hidden>
     </Page>
   )
 })

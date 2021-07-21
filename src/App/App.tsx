@@ -3,7 +3,7 @@ import { Box, useTheme } from "@material-ui/core"
 import { FC } from "react"
 
 import { AppMenu, AppHeader } from "components"
-import { LoginPage, HomePage, ContractsPage } from "pages"
+import { LoginPage, HomePage, ContractsPage, ProfilePage } from "pages"
 
 export const App = () => {
   return (
@@ -16,6 +16,7 @@ export const App = () => {
           <Switch>
             <Route path="/" component={HomePage} exact />
             <Route path="/contracts/" component={ContractsPage} exact />
+            <Route path="/profile/" component={ProfilePage} exact />
           </Switch>
         </Layout>
       </Route>

@@ -1,4 +1,6 @@
-export type ErrorType = {
+import { ResponseError } from "superagent"
+
+export type ErrorType = ResponseError & {
   timestamp: Date
   status: number
   error: string

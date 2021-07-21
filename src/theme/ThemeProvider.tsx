@@ -171,6 +171,13 @@ const components: ThemeOptions["components"] = {
       },
     },
   },
+  MuiLink: {
+    styleOverrides: {
+      root: {
+        textDecoration: "none",
+      },
+    },
+  },
 }
 
 export const ThemeProvider: React.FC = ({ children }) => (

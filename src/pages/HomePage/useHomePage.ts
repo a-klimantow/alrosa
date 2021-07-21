@@ -8,21 +8,18 @@ import {
   ContractDataType,
   BidDataType,
   ComplaintDataType,
-  BillDataType,
 } from "types"
 
 export const useHomePage = () => {
-  const { push } = useHistory()
+  const { replace } = useHistory()
   const requestContracts = useRequest({ url: "contract" })
   const requestBids = useRequest({ url: "bid" })
   const requestComplaints = useRequest({ url: "complaint" })
-  const requestBills = useRequest({ url: "bill" })
 
   const store = useLocalObservable(() => ({
     contract: { items: [], total: 0 } as ContractDataType,
     bid: { items: [], total: 0 } as BidDataType,
     complaint: { items: [], total: 0 } as ComplaintDataType,
-    bill: { items: [], total: 0 } as BillDataType,
 
     getData() {
       requestContracts
@@ -42,22 +39,15 @@ export const useHomePage = () => {
           this.complaint = body
         })
         .catch(this.error)
-
-      requestBills
-        .then(({ body }: { body: ComplaintDataType }) => {
-          this.complaint = body
-        })
-        .catch(this.error)
     },
 
     cancelRequest() {
       requestContracts.abort()
       requestBids.abort()
       requestComplaints.abort()
-      requestBills.abort()
     },
     error(e: ErrorType) {
-      push("/login/")
+      e.message !== "Aborted" && replace("/login/")
     },
   }))
 
