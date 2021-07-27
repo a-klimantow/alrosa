@@ -4,7 +4,12 @@ import {
   createTheme,
   CssBaseline,
   ThemeOptions,
+  Theme,
 } from "@material-ui/core"
+
+declare module "@material-ui/styles" {
+  interface DefaultTheme extends Theme {}
+}
 
 const palette: ThemeOptions["palette"] = {
   text: {

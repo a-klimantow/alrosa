@@ -10,3 +10,4 @@ export * from "./useIsBig"
 export * from "./useContracts"
 export * from "./useBids"
 export * from "./useComplaints"
+export * from './useSuperagent'

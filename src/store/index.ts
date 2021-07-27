@@ -1,1 +1,1 @@
-export const a = null
+export { useContactStore } from "./ContactStore"

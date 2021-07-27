@@ -1,32 +1,28 @@
-import { FC } from "react"
 import { observer } from "mobx-react-lite"
+import { Typography } from "@material-ui/core"
+import { makeStyles } from "@material-ui/styles"
 
-import { Box, Paper, Typography } from "@material-ui/core"
 import { Icon } from "components"
-import { useAppHeader } from "./useAppHeader"
+import { useContactContext } from "context"
 
 export const AppHeader = observer(() => {
-  const contact = useAppHeader()
+  const { name } = useContactContext()
+  const cls = useStyles()
   return (
-    <Wrap>
-      <Typography>{contact.name}</Typography>
+    <div className={cls.root}>
+      <Typography>{name}</Typography>
       <Icon type="notification" color="action" />
-    </Wrap>
+    </div>
   )
 })
 
-const Wrap: FC = (props) => (
-  <Box
-    component={Paper}
-    square
-    sx={{
-      gridArea: "H",
-      display: "grid",
-      gridTemplate: `". ." 1fr / 1fr auto`,
-      alignItems: "center",
-      pr: 2,
-      pl: 3,
-    }}
-    {...props}
-  />
-)
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    borderBottom: `1px solid ${theme.palette.divider}`,
+    padding: theme.spacing(0, 3, 0, 2),
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+}))

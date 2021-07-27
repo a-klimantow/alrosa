@@ -19,11 +19,7 @@ export const BillsBlock = observer(() => {
     <Table
       toolbar={
         <Toolbar title="Счета на оплату" total={store.total}>
-          <Sort
-            value={sort.value}
-            options={sort.options}
-            onChange={sort.change}
-          />
+
         </Toolbar>
       }
       header={

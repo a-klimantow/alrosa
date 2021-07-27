@@ -4,23 +4,26 @@ import { FC } from "react"
 
 import { AppMenu, AppHeader } from "components"
 import { LoginPage, HomePage, ContractsPage, ProfilePage } from "pages"
+import { ContactProvider } from "context"
 
 export const App = () => {
   return (
-    <Switch>
-      <Route path="/login/" component={LoginPage} />
-      <Route>
-        <Layout>
-          <AppHeader />
-          <AppMenu />
-          <Switch>
-            <Route path="/" component={HomePage} exact />
-            <Route path="/contracts/" component={ContractsPage} exact />
-            <Route path="/profile/" component={ProfilePage} exact />
-          </Switch>
-        </Layout>
-      </Route>
-    </Switch>
+    <ContactProvider>
+      <Switch>
+        <Route path="/login/" component={LoginPage} />
+        <Route>
+          <Layout>
+            <AppHeader />
+            <AppMenu />
+            <Switch>
+              <Route path="/" component={HomePage} exact />
+              <Route path="/contracts/" component={ContractsPage} exact />
+              <Route path="/profile/" component={ProfilePage} exact />
+            </Switch>
+          </Layout>
+        </Route>
+      </Switch>
+    </ContactProvider>
   )
 }
 
