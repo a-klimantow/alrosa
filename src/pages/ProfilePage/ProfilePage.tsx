@@ -27,5 +27,12 @@ const useStyles = makeStyles((theme) => ({
       "t t" auto
       ". ." 1fr/ 8fr 5fr
     `,
+    [`${theme.breakpoints.down("md")}`]: {
+      gridTemplate: `
+      "t" auto
+      "." auto
+      "." auto / 1fr
+    `,
+    },
   },
 }))
