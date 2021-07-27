@@ -5,6 +5,8 @@ import { TextFieldProps } from "@material-ui/core"
 
 import { useGetData, usePostData } from "hooks"
 import { ContactType } from "types"
+import { useLocalObservable } from "mobx-react-lite"
+import { useContactContext } from "context"
 
 class Store {
   getData
@@ -113,10 +115,12 @@ export const useProfilePage = () => {
   const postData = usePostData("profile/password")
   const { current } = useRef(new Store({ getData, postData }))
 
-  useEffect(() => {
-    current.getContact()
-    return () => current.cancel()
-  }, [current])
+  // useEffect(() => {
+  //   current.getContact()
+  //   return () => current.cancel()
+  // }, [current])
 
-  return current
+  const store = useLocalObservable(() => ({}))
+
+  return {}
 }
