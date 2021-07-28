@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite"
 import { Hidden } from "@material-ui/core"
 
-import { BillsTable } from "components"
+import { BillsTable, Bids, Complaints } from "components"
 import { Keys, money } from "utils"
 import {
   Page,
@@ -11,16 +11,16 @@ import {
   BlockList,
   BlockItem,
   BlockChip,
-  AddButton,
 } from "./components"
 
 import { useHomePage } from "./useHomePage"
 
 export const HomePage = observer(() => {
-  const { contract, bid, complaint } = useHomePage()
+  const { contract } = useHomePage()
+
   return (
     <Page>
-      <Block gridArea="A">
+      <Block>
         <BlockHeader name="Договора" total={contract.total} />
         <Divider />
         <BlockList>
@@ -33,42 +33,9 @@ export const HomePage = observer(() => {
           ))}
         </BlockList>
       </Block>
-      <Block gridArea="B">
-        <BlockHeader name="Заявки" total={bid.total}>
-          <AddButton />
-        </BlockHeader>
-        <Divider />
-        <BlockList>
-          {bid.items.map((b) => (
-            <BlockItem
-              key={b.id}
-              number={b.number}
-              text={b.description}
-              status={b.status}
-            >
-              <BlockChip data={[Keys.DateCreate, b.createDate]} />
-            </BlockItem>
-          ))}
-        </BlockList>
-      </Block>
-      <Block gridArea="C">
-        <BlockHeader name="Жалобы" total={complaint.total}>
-          <AddButton />
-        </BlockHeader>
-        <Divider />
-        <BlockList>
-          {complaint.items.map((c) => (
-            <BlockItem
-              key={c.id}
-              number={c.number}
-              text={c.description}
-              status={c.status}
-            >
-              <BlockChip data={[Keys.DateCreate, c.createDate]} />
-            </BlockItem>
-          ))}
-        </BlockList>
-      </Block>
+      <Bids />
+      <Complaints />
+
       <Hidden mdDown>
         <BillsTable />
       </Hidden>

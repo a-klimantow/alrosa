@@ -49,6 +49,12 @@ const typography: ThemeOptions["typography"] = {
     fontWeight: 600,
   },
 
+  h5: {
+    fontSize: 24,
+    lineHeight: "32px",
+    fontWeight: 600,
+  },
+
   h6: {
     fontSize: 16,
     lineHeight: "24px",

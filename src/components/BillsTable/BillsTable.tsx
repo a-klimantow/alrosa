@@ -5,7 +5,7 @@ import { useBills } from "./useBils"
 
 export const BillsTable = observer(() => {
   const bills = useBills()
-  console.log(bills.data.items)
+
   return (
     <Wrapp>
       <BillsToolbar total={bills.data.total} sort={bills.sort} />

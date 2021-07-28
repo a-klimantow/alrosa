@@ -2,23 +2,19 @@ import React from "react"
 import { useLocalObservable } from "mobx-react-lite"
 import { useHistory } from "react-router-dom"
 
+import { useBidStore } from "store"
 import { useRequest } from "hooks"
-import {
-  ErrorType,
-  ContractDataType,
-  BidDataType,
-  ComplaintDataType,
-} from "types"
+import { ErrorType, ContractDataType, ComplaintDataType } from "types"
 
 export const useHomePage = () => {
   const { replace } = useHistory()
   const requestContracts = useRequest({ url: "contract" })
   const requestBids = useRequest({ url: "bid" })
   const requestComplaints = useRequest({ url: "complaint" })
-
+  const bid = useBidStore()
   const store = useLocalObservable(() => ({
     contract: { items: [], total: 0 } as ContractDataType,
-    bid: { items: [], total: 0 } as BidDataType,
+    bid,
     complaint: { items: [], total: 0 } as ComplaintDataType,
 
     getData() {
@@ -28,11 +24,11 @@ export const useHomePage = () => {
         })
         .catch(this.error)
 
-      requestBids
-        .then(({ body }: { body: BidDataType }) => {
-          this.bid = body
-        })
-        .catch(this.error)
+      // requestBids
+      //   .then(({ body }: { body: BidDataType }) => {
+      //     this.bid = body
+      //   })
+      //   .catch(this.error)
 
       requestComplaints
         .then(({ body }: { body: ComplaintDataType }) => {
